@@ -4,30 +4,131 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Monster Maker</title>
+   
   </head>
   <body>
+    <div class="row facePartRow">
+      <div class="col-md-4 buttonLeft1"><button onclick="show_face_image('left')" type="button" class="btn btn-dark">&lt;</button></div>
+      <div id="face" class="col-md-4"><img id="main-image1" /></div>
+      <div class="col-md-4 buttonRight1"><button onclick="show_face_image('right')" type="button" class="btn btn-dark">&gt;</button></div>
+  </div>
     <div class="row bodyPartRow">
-      <div class="col-md-4 buttonLeft"><button type="button" class="btn btn-dark"><</button></div>
-      <div id="face" class="col-md-4"></div>
-      <div class="col-md-4 buttonRight"><button type="button" class="btn btn-dark">></button></div>
+      <div class="col-md-4 buttonLeft2"><button onclick="show_body_image('left')" type="button" class="btn btn-dark">&lt;</button></div>
+      <div id="face" class="col-md-4"><img id="main-image2" /></div>
+      <div class="col-md-4 buttonRight2"><button onclick="show_body_image('right')" type="button" class="btn btn-dark">&gt;</button></div>
+  </div>
+    <div class="row feetPartRow">
+      <div class="col-md-4 buttonLeft3"><button onclick="show_feet_image('left')" type="button" class="btn btn-dark">&lt;</button></div>
+      <div id="face" class="col-md-4"><img id="main-image3" /></div>
+      <div class="col-md-4 buttonRight3"><button onclick="show_feet_image('right')" type="button" class="btn btn-dark">&gt;</button></div>
   </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--Image Switching-->
+<script type="text/javascript">
+var images1 = ['images/Face1.png', 'images/Face2.png', 'images/Face3.png'];
+var images2 = ['images/Body1.png', 'images/Body2.png', 'images/Body3.png', 'images/Body4.png'];
+var images3 = ['images/Legs1.png', 'images/Legs2.png', 'images/Legs3.png', 'images/Legs4.png'];
+
+var index = 0;
+
+var the_image1 = document.getElementById("main-image1");
+var the_image2 = document.getElementById("main-image2");
+var the_image3 = document.getElementById("main-image3");
+the_image1.src = images1[0];
+the_image2.src = images2[0];
+the_image3.src = images3[0];
+
+function show_face_image(direction)
+{  
+  if (direction == "left")
+  {
+    index--;
+  }
+  else
+  {
+    index++;
+    index %= images1.length;
+  }
+
+  if (index < 0)
+  {
+    index = images1.length - 1;
+  }
+
+  the_image1.src = images1[index];
+}
+
+function show_body_image(direction)
+{
+  if (direction == "left")
+  {
+    index--;
+  }
+  else
+  {
+    index++;
+    index %= images2.length;
+  }
+
+  if (index < 0)
+  {
+    index = images2.length - 1;
+  }
+
+  the_image2.src = images2[index];
+}
+
+function show_feet_image(direction)
+{
+  if (direction == "left")
+  {
+    index--;
+  }
+  else
+  {
+    index++;
+    index %= images3.length;
+  }
+
+  if (index < 0)
+  {
+    index = images3.length - 1;
+  }
+
+  the_image3.src = images3[index];
+}
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
   <style>
-  .bodyPartRow{min-height: 4rem;}
-  #face{
-    background-color: gray;
-  }
-  .buttonLeft{text-align: right;}
+  .facePartRow{z-index: 200;}
+  .bodyPartRow{z-index: 1;
+    margin-top: -28rem;}
+  .feetPartRow{z-index: 3;
+    margin-top: -29rem;}
+  #face{}
+  #main-image1{max-width: 480px;
+      z-index: 400000;
+    position: relative;}
+    #main-image2{max-width: 480px;
+        z-index: -400000;
+    position: relative;}
+      #main-image3{max-width: 480px;
+          z-index: -700000;
+    position: relative;}
+  .buttonLeft1{text-align: right;margin-top: 5rem;}
+    .buttonLeft2{text-align: right;margin-top: 10rem;}
+    .buttonLeft3{text-align: right;margin-top: 22rem;}
+  .buttonRight1{margin-top: 5rem;}
+    .buttonRight2{margin-top: 10rem;}
+    .buttonRight3{margin-top: 22rem;}
   </style>
 </html>
